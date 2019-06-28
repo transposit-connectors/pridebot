@@ -1,79 +1,64 @@
 {
   "v2": {
     "transposit": {
-      "dependencies": [
-        {
-          "name": "transposit/twilio:v1.*.*",
-          "alias": "twilio"
-        },
-        {
-          "name": "transposit/apify_v2:v1.*.*",
-          "alias": "apify_v2"
+      "dependencies": [{
+        "name": "transposit/twilio:v1.*.*",
+        "alias": "twilio"
+      }, {
+        "name": "transposit/apify_v2:v1.*.*",
+        "alias": "apify_v2"
+      }],
+      "operations": [{
+        "id": "send_message",
+        "description": "The Twilio call to send the user a reply",
+        "tql": {
+          "parameters": [{
+            "name": "recipient",
+            "type": "STRING"
+          }, {
+            "name": "message",
+            "type": "STRING"
+          }],
+          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='ACa6adde116ecf6c10cf4a7a1afb8a41c9'\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : '+16504108476',\n    'Body' : @message\n  })\n"
         }
-      ],
-      "operations": [
-        {
-          "id": "send_message",
-          "description": "The Twilio call to send the user a reply",
-          "tql": {
-            "parameters": [
-              {
-                "name": "recipient",
-                "type": "STRING"
-              },
-              {
-                "name": "message",
-                "type": "STRING"
-              }
-            ],
-            "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='ACa6adde116ecf6c10cf4a7a1afb8a41c9'\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : '+16504108476',\n    'Body' : @message\n  })\n"
-          }
+      }, {
+        "id": "webhook",
+        "description": "A webhook for Twilio to send a POST to when it recieves a text.",
+        "function": {
+          "parameters": [{
+            "name": "http_event",
+            "default": {
+              "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
+            },
+            "type": "OBJECT"
+          }],
+          "js": "webhook.js"
         },
-        {
-          "id": "webhook",
-          "description": "A webhook for Twilio to send a POST to when it recieves a text.",
-          "function": {
-            "parameters": [
-              {
-                "name": "http_event",
-                "default": {
-                  "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
-                },
-                "type": "OBJECT"
-              }
-            ],
-            "js": "webhook.js"
-          },
-          "access": {
-            "requireApiKey": true,
-            "webhook": true
-          }
-        },
-        {
-          "id": "update_events",
-          "description": "Runs an apify task to rescrape the website every week",
-          "tql": {
-            "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId='GdsRKHEyB5suwN7kG'\n"
-          }
-        },
-        {
-          "id": "get_event",
-          "description": "Pulls the most recent scrape from apify and matches the most recent one with that location",
-          "tql": {
-            "parameters": [
-              {
-                "name": "location",
-                "type": "STRING"
-              }
-            ],
-            "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId='GdsRKHEyB5suwN7kG'\n  AND status='SUCCEEDED'\n  AND location=@location\n  LIMIT 1\n  "
-          }
+        "access": {
+          "requireApiKey": true,
+          "webhook": true
         }
-      ],
+      }, {
+        "id": "update_events",
+        "description": "Runs an apify task to rescrape the website every week",
+        "tql": {
+          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId='GdsRKHEyB5suwN7kG'\n"
+        }
+      }, {
+        "id": "get_event",
+        "description": "Pulls the most recent scrape from apify and matches the most recent one with that location",
+        "tql": {
+          "parameters": [{
+            "name": "location",
+            "type": "STRING"
+          }],
+          "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId='GdsRKHEyB5suwN7kG'\n  AND status='SUCCEEDED'\n  AND location=@location\n  LIMIT 1\n  "
+        }
+      }],
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
     },
-    "description": "A Twilio bot that sends you info on the sooner pride even in a given city."
+    "description": "A Twilio bot that sends you info on the soonest pride event in a given city."
   }
 }
