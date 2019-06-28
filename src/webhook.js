@@ -4,7 +4,7 @@
   let recipient = body.From;
   let event = api.run('this.get_event', {location: body.Body.trim()});
   if (event.length < 1 || event == undefined) {
-    let message = 'Sorry, no events in your area. 😞\n\nFrom your friends at transposit.com';
+    let message = 'Sorry, no events in that city. 😞\n\nFrom your friends at transposit.com';
     api.run('this.send_message', {recipient: recipient, message: message});
   }
   else {
