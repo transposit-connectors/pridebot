@@ -19,7 +19,7 @@
             "name": "message",
             "type": "STRING"
           }],
-          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='ACa6adde116ecf6c10cf4a7a1afb8a41c9'\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : '+16504108476',\n    'Body' : @message\n  })\n"
+          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid='ACa6adde116ecf6c10cf4a7a1afb8a41c9'\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : '+14153013658',\n    'Body' : @message\n  })\n"
         }
       }, {
         "id": "webhook",
