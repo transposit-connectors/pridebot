@@ -64,6 +64,9 @@
       }, {
         "name": "phonenum",
         "type": "STRING"
+      }, {
+        "name": "actortaskid",
+        "type": "STRING"
       }]
     },
     "description": "A Twilio bot that sends you info on the soonest pride event in a given city."
