@@ -63,6 +63,7 @@
         "type": "STRING"
       }, {
         "name": "phonenum",
+        "description": "Your Twilio phone number in the format \"+15555555555\"",
         "type": "STRING"
       }, {
         "name": "actortaskid",
