@@ -61,6 +61,9 @@
       "appSettings": [{
         "name": "sid",
         "type": "STRING"
+      }, {
+        "name": "phonenum",
+        "type": "STRING"
       }]
     },
     "description": "A Twilio bot that sends you info on the soonest pride event in a given city."
