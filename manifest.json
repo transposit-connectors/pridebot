@@ -60,6 +60,7 @@
       "userSettingsDisplay": "GENERATED",
       "appSettings": [{
         "name": "sid",
+        "description": "Your Twilio account sid",
         "type": "STRING"
       }, {
         "name": "phonenum",
