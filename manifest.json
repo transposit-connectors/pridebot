@@ -48,11 +48,7 @@
         "id": "update_events",
         "description": "Runs an apify task to rescrape the website every week",
         "tql": {
-          "parameters": [{
-            "name": "actortaskid",
-            "type": "STRING"
-          }],
-          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=@actortaskid\n"
+          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=\"GdsRKHEyB5suwN7kG\"\n"
         }
       }, {
         "id": "get_event",
