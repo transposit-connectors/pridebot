@@ -1,6 +1,6 @@
 # PrideBot 🏳️‍🌈
 
-A Twilio bot that sends you info on the sooner pride even in a given city.
+A Twilio bot that sends you info on the sooner pride even in a given city. Read the [blog post](https://www.transposit.com/blog/2019.06.28-pridebot/) we wrote about it to learn more!
 
 This bot uses a custom scraper made in apify to _specifically_ scrape https://www.nighttours.com/gaypride/ for their events. The code for this scraper can be found [here](https://gist.github.com/WingofaGriffin/83f1df1987a5ec39f5a5b38c5d5ce1d0).
 
