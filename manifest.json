@@ -25,7 +25,7 @@
             "name": "sid",
             "type": "STRING"
           }],
-          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid=@sid\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : @phonenum,\n    'Body' : @message\n  })\n"
+          "tql": "SELECT * FROM twilio.send_message\n  WHERE mediaTypeExtension='.json'\n  AND AccountSid=@sid\t\t-- Set this in environment variables\n  AND $body=(SELECT {\n    'To' : @recipient,\n    'From' : @phonenum,\t\t-- Set this in environment variables\n    'Body' : @message\n  })\n"
         }
       }, {
         "id": "webhook",
@@ -48,7 +48,7 @@
         "id": "update_events",
         "description": "Runs an apify task to rescrape the website every week",
         "tql": {
-          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=\"GdsRKHEyB5suwN7kG\"\n"
+          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=\"GdsRKHEyB5suwN7kG\"\t\t\t-- Change this to your Apify task ID.\n"
         }
       }, {
         "id": "get_event",

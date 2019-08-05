@@ -1,7 +1,9 @@
 ({ http_event }) => {
   let body = http_event.parsed_body;
   let recipient = body.From;
+  // Trim and lowercase all messages for better matching chance
   let event = api.run('this.get_event', {location: body.Body.trim().toLowerCase()});
+  // Check for match
   if (event.length < 1 || event == undefined) {
     let message = 'Sorry, no events in that city. 😞\n\nFrom your friends at transposit.com';
     api.run('this.send_message', {recipient: recipient, message: message, sid: env.get("sid"), phonenum: env.get("phonenum")});
