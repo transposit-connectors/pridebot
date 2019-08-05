@@ -61,7 +61,7 @@
             "name": "actortaskid",
             "type": "STRING"
           }],
-          "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId=@actortaskid\n  AND status='SUCCEEDED'\n  AND location=@location\n  LIMIT 1\n  "
+          "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId=@actortaskid\t-- This to be filled in environment variables.\n  AND status='SUCCEEDED'\n  AND location=@location\t\t\t-- Matching is done by an exact match. This could be expanded by converting to long/lat.\n  LIMIT 1\n  "
         }
       }],
       "javascriptAPIVersion": "3",
