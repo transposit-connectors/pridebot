@@ -77,7 +77,7 @@
         "type": "STRING"
       }, {
         "name": "actortaskid",
-        "description": "Task ID or a tilde-separated owner's username and task's name.",
+        "description": "Your Apify task ID or a tilde-separated owner's username and task's name.",
         "type": "STRING"
       }]
     },
