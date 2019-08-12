@@ -75,10 +75,6 @@
         "name": "phonenum",
         "description": "Your Twilio phone number in the format \"+15555555555\"",
         "type": "STRING"
-      }, {
-        "name": "actortaskid",
-        "description": "Your Apify task ID or a tilde-separated owner's username and task's name.",
-        "type": "STRING"
       }]
     },
     "description": "A Twilio bot that sends you info on the soonest pride event in a given city.",
