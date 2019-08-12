@@ -48,7 +48,7 @@
         "id": "update_events",
         "description": "Runs an apify task to rescrape the website every week",
         "tql": {
-          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=\"GdsRKHEyB5suwN7kG\"\t\t\t-- Change this to your Apify task ID.\n"
+          "tql": "SELECT * FROM apify_v2.sync_run_task_no_input\n  WHERE actorTaskId=\"GdsRKHEyB5suwN7kG\""
         }
       }, {
         "id": "get_event",
@@ -61,7 +61,7 @@
             "name": "actortaskid",
             "type": "STRING"
           }],
-          "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId=@actortaskid\t-- This to be filled in environment variables.\n  AND status='SUCCEEDED'\n  AND location=@location\t\t\t-- Matching is done by an exact match. This could be expanded by converting to long/lat.\n  LIMIT 1\n  "
+          "tql": "SELECT title, date, url FROM apify_v2.get_items_in_task_last_run_dataset\n  WHERE actorTaskId='GdsRKHEyB5suwN7kG'\n  AND status='SUCCEEDED'\n  AND location=@location\t\t\t-- Matching is done by an exact match. This could be expanded by converting to long/lat.\n  LIMIT 1\n  "
         }
       }],
       "javascriptAPIVersion": "3",
