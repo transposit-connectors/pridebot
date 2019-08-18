@@ -1,4 +1,4 @@
-# PrideBot 🏳️‍🌈
+# PrideBot
 
 A Twilio bot that sends you info on the sooner pride even in a given city. Read the [blog post](https://www.transposit.com/blog/2019.06.28-pridebot/) we wrote about it to learn more!
 
