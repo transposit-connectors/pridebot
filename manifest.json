@@ -78,6 +78,6 @@
       }]
     },
     "description": "A bot that matches you with the soonest Pride event in your city, using Twilio and Apify.",
-    "displayName": "Pridebot"
+    "displayName": "PrideBot"
   }
 }
