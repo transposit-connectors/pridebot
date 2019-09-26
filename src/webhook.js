@@ -11,5 +11,5 @@
     let message = `🏳️‍🌈 ${event[0].title}, ${event[0].date}: ${event[0].url} 🏳️‍🌈\n\nFrom your friends at transposit.com`;
     api.run('this.send_message', {recipient: recipient, message: message, sid: env.get("sid"), phonenum: env.get("phonenum")});
   }
-  return { status_code: 200 };
+  return { status_code: 200, headers: { "Content-Type": "application/xml" } };
 }
